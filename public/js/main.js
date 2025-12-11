@@ -53,3 +53,22 @@ window.addEventListener('resize', () => {
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
 });
+
+const observerOptions = {
+    threshold: 0.1, // Dispara quando 10% do elemento aparece
+    rootMargin: "0px 0px -50px 0px" // Dispara um pouco antes de chegar no topo
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            // Opcional: Para de observar depois de aparecer (para não animar de novo ao subir)
+            observer.unobserve(entry.target); 
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.scroll-reveal').forEach((el) => {
+    observer.observe(el);
+});
