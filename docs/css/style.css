@@ -216,6 +216,47 @@ h1 {
 .offer-icon { font-size: 48px; color: var(--accent-color); margin-bottom: 24px; display: inline-block; filter: drop-shadow(0 0 10px rgba(172, 236, 161, 0.4)); }
 .offer-card h3 { margin-bottom: 16px; font-size: 22px; }
 
+.partners-slider {
+    overflow: hidden;
+    padding: 60px 0;
+    position: relative;
+    width: 100%;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.slide-track {
+    display: flex;
+    width: fit-content;
+    animation: scroll 35s linear infinite;
+    align-items: center;
+}
+
+.slide-track:hover {
+    animation-play-state: paused;
+}
+
+.partner-img {
+    height: 50px;
+    width: auto;
+    margin: 0 50px;
+    opacity: 0.6;
+    filter: brightness(0) invert(1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.partner-img:hover {
+    opacity: 1;
+    filter: brightness(0) invert(1) drop-shadow(0 0 5px #aceca1);
+    transform: scale(1.1);
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
 .stats-section {
     background: linear-gradient(to right, var(--bg-secondary), var(--bg-color));
     border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);
@@ -226,14 +267,6 @@ h1 {
 .stat-icon { font-size: 32px; color: var(--accent-color); margin-bottom: 16px; opacity: 0.8; }
 .stat-number { display: block; font-size: 48px; font-weight: 800; color: var(--text-main); margin-bottom: 8px; }
 .stat-item p { color: var(--text-muted); font-size: 16px; font-weight: 500; }
-
-.partners-flex {
-    display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 40px 60px;
-    opacity: 0.6;
-}
-.partner-logo { font-size: 24px; font-weight: 700; color: var(--text-muted); letter-spacing: 1px; transition: all 0.3s ease; cursor: default; }
-.partners-flex:hover .partner-logo { opacity: 0.4; filter: blur(1px); }
-.partners-flex .partner-logo:hover { opacity: 1; color: var(--accent-color); filter: blur(0); transform: scale(1.05); }
 
 .final-cta-section {
     text-align: center; padding: 80px 40px; margin: 100px auto 60px;
@@ -287,8 +320,6 @@ footer { background: var(--bg-secondary); padding: 80px 0 0; border-top: 1px sol
 .delay-2 { transition-delay: 0.3s; }
 .delay-3 { transition-delay: 0.5s; }
 .delay-4 { transition-delay: 1.0s; }
-
-/* RESPONSIVE STYLES */
 
 @media (max-width: 1250px) {
     .hero-interface-container.scroll-reveal.visible {
