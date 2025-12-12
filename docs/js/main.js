@@ -18,7 +18,7 @@ starsGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
 
 const starsMaterial = new THREE.PointsMaterial({
     size: 0.3,
-    color: 0xa0d8ff,
+    color: 0xaceca1,
     transparent: true,
     opacity: 0.8,
 });
@@ -55,15 +55,14 @@ window.addEventListener('resize', () => {
 });
 
 const observerOptions = {
-    threshold: 0.1, // Dispara quando 10% do elemento aparece
-    rootMargin: "0px 0px -50px 0px" // Dispara um pouco antes de chegar no topo
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px"
 };
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
         if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-            // Opcional: Para de observar depois de aparecer (para não animar de novo ao subir)
             observer.unobserve(entry.target); 
         }
     });
